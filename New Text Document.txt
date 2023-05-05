@@ -1,0 +1,209 @@
+Para configurar git:
+$ git config --global user.name "name"
+$ git config --global user.mail "mail@mail.com"
+
+Para ver configuracion de git:
+$ git config --global -e
+
+iniciar repositorio:
+$ git init
+
+Informacion del repositorio, archivos listos para commit y los que no. y que a que rama pertenecen:
+$ git status
+
+agregar archivos para estar pendiente de los cambios:
+$ git add .
+
+hacer snapshot del proyecto:
+$ git commit -m "primer commit"
+
+revertir cambios al ultimo commit:
+$ git checkout -- .
+
+Revisar historial del repositorio actualmente:
+$ git log
+
+Agregar todos los archivos en el directorio actual con extension .png:
+$ git add *.png
+
+Agregar en el directorio actual, solo directorio:
+$ git add css/
+
+Agregar todo lo que nos queda:
+$ git add -A
+
+Quitar uno de los agregados:
+$ git reset *.xml
+
+Agregar todos los archivos que modificamos en el proyecto: 
+$ git add "*.txt"
+
+Agregar todos los archivos:
+$ git add --all
+
+Agrega los pdfs dentro de la carpeta pdfs
+$ git add pdfs/*.pdf
+
+Si muestra warnings a la hora de add arcvhivos:
+$ git config core.autocrlf true
+
+Log resumido:
+$ git log --oneline
+
+muestra log resumido y vistoso: 
+$ git log --oneline --decorate --all --graph
+
+Muestra status resumido:
+$ git status -s
+
+Muestra status resumido con la rama que estamos:
+$ git status -s -b
+
+Para crear un alias personalizado(lg es como lo llamare | esto se llama como "git lg"):
+$ git config --global alias.lg "log --online --decorate --all --graph"
+
+Ver configuraciones sin poder editar:
+$ git config --global -l
+
+Cambios que hubieron en los archivos despues del commit:
+$ git diff
+
+Ver todos los archivos del stage (los que hice add):
+$ git diff --staged
+
+Sacar archivo de add del ultimo commit que hicimos (HEAD)
+$ git reset HEAD README.md
+
+Volver cambios al primer commit
+$ git checkout -- README.md
+
+Agregar y commit de todos los archivos:
+$ git commit -am "Readme actualz"
+
+Cambiar mensaje del ultimo commit:
+$ git commit --amend -m "Actualizamos el readme"
+
+Si queremos apuntar al commit que estaba antes del ultimo commit:
+$ HEAD^
+
+Agregar cambio al penultimo commit que hicimos (o usando una ID):
+$ git reset --soft HEAD^
+
+Volver a un commit:
+$ git reset --mix b2b640d
+
+Borrar todos los commit posteriores del id:
+$ git reset --hard b2b640d
+
+Muestra todos los cambios desde el inicio:
+$ git reflog
+
+Para recuperar todo desde un id con el comando reflog:
+$ git reset --hard a9df858
+
+Para cambiar nombre de un archivo con git (luego hacer commit):
+$ git mv mundo.txt holamundo.txt
+
+Para eliminar archivo con git (luego hacer commit):
+$ git rm holamundo.txt
+
+**** Creacion arvhivo .gitignore para ignorar carpetas completas y archivos
+
+Para crear una nueva rama
+$ git branch nuevarama
+
+Listar ramas
+$ git branch
+
+Moverme de rama
+$ git checkout namerama
+
+Para ver los cambios entre ramas
+$ git diff nuevarama master
+
+Para unir rama a otra (la rama actual es a lo que se agregara lo de la otra rama)
+$ git merge nuevarama
+^en este caso estoy parado en la master agregando lo de la "nuevarama"
+
+Para borrar una rama (es buena practica borrar la rama que se uso para merge)
+$ git branch -d nuevarama
+
+Para crear una rama y moverme a ella
+$ git checkout -b nuevarama
+
+Para crear un tag
+$ git tag nombretag
+
+Listar todos los tags
+$ git tag
+
+Borrar un tag
+$ git tag -d nombretag
+
+Crear tag con comentario
+$ git tag -a v1.0.0 -m "Version 1.0.0"
+
+Volver un commit a un tag (con el id)
+$ git tag -a v0.0.1 345d7de -m "Version alfa"
+
+Ver informacion de un tag
+$ git show nombretag
+
+Dejar codigo en reserva, los cambios quedaran como stash y se dejara todo como en el ultimo commit
+$ git stash
+
+Listar todos los stash
+$ git stash list
+
+Extrae los cambios pendientes de los stash (se borra el stash de los commits)
+$ git stash pop
+
+Si hay conflicto al hacer stash, se debe corregir manual y borrar el stash, si no pongo indice solo se usara elstash@{0}
+$ git stash drop stash@{2}
+
+Para aplicar solo un stash, si no pongo indice solo se usara elstash@{0}
+$ git stash apply stash@{1}
+
+Mostrar informacion completa de los stash o con el indice
+$ git stash show stash@{1}
+
+Mensajes en stash
+$ git save "Agregamos a un nuevo stash"
+
+Borra todos los stash de raiz
+$ git stash clear
+
+Pone todos los commits del master detras de la rama que se creo para hacer un merge forward
+$ git rebase <rama>
+
+Revase en modo interactivo (-i) apuntando desde el ultimo commit (HEAD) hasta 4 commits (~4)
+$ git rebase -i HEAD~4
+Para tomar 2 commits y fusionarlos poner squash (s) delante del id del commit y se fusionara con el de arriba
+Para cambiar un nombre de commit de manera interactiva, se debe usar el reword(r)
+
+Subir tags a github
+$ git push --tags
+
+Resolver conflictos desde GitHub
+$ git config --global pull.rebase true
+
+Para traer todos los cambios y la ramas desde GitHub (las ramas quedan como remoto)
+$ git pull --all
+
+Para listar todas las ramas incluso las remoto (con un checkout me muevo a la rama remota)
+$ git branch --all
+
+Actualiza (fetch) de ramas remotas, si borro una rama desde github. Usando este comando se limpiará la rama
+$ git remote prune origin
+
+Recuperar rama productiva (v1.0.0), y un "-b" para ir a la rama borrada
+$ git checkout nombre_tag
+$ git checkout -b nombre-rama
+
+Clonar proyecto desde la rama que quiero
+$ 
+
+Para subir una rama local a GitHub
+$ git push -u origin rama-nueva
+
+https://desarrolloweb.com/articulos/trabajar-ramas-git.html
