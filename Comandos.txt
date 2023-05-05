@@ -58,6 +58,7 @@ $ git status -s
 
 Muestra status resumido con la rama que estamos:
 $ git status -s -b
+> git config --global alias.s "status -s -b"
 
 Para crear un alias personalizado(lg es como lo llamare | esto se llama como "git lg"):
 $ git config --global alias.lg "log --online --decorate --all --graph"
